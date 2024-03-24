@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from "./components/Header";
 import Button from "./components/Button";
+import formatMoney from "./utils";
 
 function App() {
   // The useState function returns an array with two elements. The first element is the current state value, and the second element is a function that allows you to update it.
@@ -60,7 +61,7 @@ function App() {
         step={step}
         value={amount}
       />
-      <p className='text-center my-10 text-5xl font-extrabold text-indigo-600'>{amount}</p>
+      <p className='text-center my-10 text-5xl font-extrabold text-indigo-600'>{formatMoney(amount)}</p>
     </div>
   )
 }
