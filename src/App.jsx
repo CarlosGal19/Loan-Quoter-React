@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from "./components/Header";
+import Button from "./components/Button";
 
 function App() {
   // The useState function returns an array with two elements. The first element is the current state value, and the second element is a function that allows you to update it.
@@ -38,20 +39,16 @@ function App() {
       <Header />
 
       <div className='flex justify-between my-8'>
-        <button
-          type='button'
-          className='h-10 w-10 flex items-center justify-center font-bold text-white text-2xl bg-lime-500 rounded-full
-          hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-lime-500'
-          onClick={handleClickDecrease}>-
 
-        </button>
+        <Button
+          operator = '-'
+          func = {handleClickDecrease}
+        />
 
-        <button
-          type='button'
-          className='h-10 w-10 flex items-center justify-center font-bold text-white text-2xl bg-lime-500 rounded-full
-          hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-lime-500'
-          onClick={handleClickIncrease}>+
-        </button>
+        <Button
+          operator = '+'
+          func = {handleClickIncrease}
+        />
       </div>
 
       <input
