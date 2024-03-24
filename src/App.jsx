@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from "./components/Header";
 import Button from "./components/Button";
-import formatMoney from "./utils";
+import { formatMoney } from "./utils";
+import { totalPayment } from "./utils";
 
 function App() {
   // The useState function returns an array with two elements. The first element is the current state value, and the second element is a function that allows you to update it.
   const [amount, setAmount] = useState(10000);
   const [term, setTerm] = useState(6);
+  const [total, setTotal] = useState(totalPayment(amount, term));
+
+  useEffect(() => {
+    setTotal(totalPayment(amount, term));
+  }, [amount, term]);
 
   const min = 0;
   const max = 20000;
@@ -76,6 +82,15 @@ function App() {
         <option value="12">12 months</option>
         <option value="24">24 months</option>
       </select>
+
+      <div className='my-5 space-y-3 bg-gray-50 p-5'>
+        <h2 className='text-2xl font-extrabold text-gray-500 text-center'>
+          Summary of <span className='text-indigo-600'>payments</span>
+        </h2>
+        <p className='text-xl text-gray-500 text-center font-bold'>{term} months</p>
+        <p className='text-xl text-gray-500 text-center font-bold'>Total: {formatMoney(total)}</p>
+        <p className='text-xl text-gray-500 text-center font-bold'>Monthly</p>
+      </div>
     </div>
   )
 }
