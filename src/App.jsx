@@ -9,10 +9,15 @@ function App() {
   const [amount, setAmount] = useState(10000);
   const [term, setTerm] = useState(6);
   const [total, setTotal] = useState(totalPayment(amount, term));
+  const [month, setMonth] = useState();
 
   useEffect(() => {
     setTotal(totalPayment(amount, term));
   }, [amount, term]);
+
+  useEffect(() => {
+    setMonth(total / term);
+  }, [term, total])
 
   const min = 0;
   const max = 20000;
@@ -89,7 +94,7 @@ function App() {
         </h2>
         <p className='text-xl text-gray-500 text-center font-bold'>{term} months</p>
         <p className='text-xl text-gray-500 text-center font-bold'>Total: {formatMoney(total)}</p>
-        <p className='text-xl text-gray-500 text-center font-bold'>Monthly</p>
+        <p className='text-xl text-gray-500 text-center font-bold'>Monthly: {formatMoney(month)}</p>
       </div>
     </div>
   )
