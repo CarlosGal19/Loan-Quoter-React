@@ -6,7 +6,7 @@ import formatMoney from "./utils";
 function App() {
   // The useState function returns an array with two elements. The first element is the current state value, and the second element is a function that allows you to update it.
   const [amount, setAmount] = useState(10000);
-  // const [term, setTerm] = useState(6);
+  const [term, setTerm] = useState(6);
 
   const min = 0;
   const max = 20000;
@@ -68,7 +68,10 @@ function App() {
         Choose a <span className='text-indigo-600'>term</span> to pay
       </h2>
 
-      <select className='mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-500'>
+      <select
+        className='mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-500'
+        value={term}
+        onChange={ e => setTerm(+e.target.value)}>
         <option value="6">6 months</option>
         <option value="12">12 months</option>
         <option value="24">24 months</option>
